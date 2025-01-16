@@ -8,4 +8,4 @@ jobs:
     - uses: actions/checkout@v2
     - uses: stackhawk/hawkscan-action@v2.2.0
       with:
-        apiKey: ${{ secrets.fossaApiKey }}
+        apiKey: ${{ secrets.FOSSAAPIKEY }}
