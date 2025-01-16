@@ -1,28 +1,20 @@
-name: Dependency-Check
+name: stackhawk
 on: [push]
 
 jobs:
-  depchecktest:
+  fossa-scan:
     runs-on: ubuntu-latest
-    name: depecheck_test
     steps:
-      - name: Checkout
+      - name: "Checkout Code"
         uses: actions/checkout@v2
-      - name: Build project with Maven
-        run: mvn clean install
-      - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
+
+      - name: "Run FOSSA Scan"
+        uses: fossas/fossa-action@v1
         with:
-          project: 'test'
-          path: '.'
-          format: 'HTML'
-          out: 'reports' # this is the default, no need to specify unless you wish to override it
-          args: >
-            --failOnCVSS 7
-            --enableRetired
-      - name: Upload Test results
-        uses: actions/upload-artifact@master
+          api-key: ${{secrets.fossaApiKey}}
+
+      - name: "Run FOSSA Test"
+        uses: fossas/fossa-action@v1
         with:
-           name: Depcheck report
-           path: ${{github.workspace}}/reports
+          api-key: ${{secrets.fossaApiKey}}
+          run-tests: true
