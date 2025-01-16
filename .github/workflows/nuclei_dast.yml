@@ -9,7 +9,7 @@ jobs:
 
       - name: Nuclei - Vulnerability Scan
         id: nuclei_scan
-        uses: projectdiscovery/nuclei-action@latest
+        uses: projectdiscovery/nuclei-action@main
         with:
           target: https://ginandjuice.shop
 
