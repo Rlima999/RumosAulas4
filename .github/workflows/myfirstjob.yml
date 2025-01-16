@@ -1,6 +1,5 @@
 name: myfirstjob
-on:
-  workflow_dispatch:
+on: [push]
 
 jobs:
   my_first_job:
