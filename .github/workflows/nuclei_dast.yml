@@ -1,7 +1,5 @@
 name: Nuclei - Vulnerability Scan
-
-on:
-    workflow_dispatch:
+on: [push]
 
 jobs:
   nuclei-scan:
